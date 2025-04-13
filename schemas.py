@@ -1,4 +1,3 @@
-# schemas.py
 from pydantic import BaseModel
 
 # Schema cho dữ liệu gửi lên khi đăng ký
@@ -8,4 +7,5 @@ class UserCreate(BaseModel):
     fullname: str
 
     class Config:
-        orm_mode = True  # Cho phép trả về đối tượng từ ORM như SQLAlchemy
+        # Cập nhật Config theo cách mới
+        from_attributes = True
