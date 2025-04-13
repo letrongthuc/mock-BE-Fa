@@ -14,3 +14,10 @@ app.include_router(auth.router)
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the API! API is running!"}
+
+import os
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
