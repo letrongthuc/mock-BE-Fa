@@ -16,7 +16,7 @@ def test_signup():
             db.delete(user)
             db.commit()
 
-    response = client.post("/signup", json={
+    response = client.post("/register", json={
         "email": "testuser@example.com",
         "password": "securePassword123",
         "fullname": "Test User"
@@ -43,7 +43,7 @@ def test_signup_email_exists():
             db.commit()
 
     # Gửi lại request đăng ký với email trùng
-    response = client.post("/signup", json={
+    response = client.post("/register", json={
         "email": test_email,
         "password": "securePassword123",
         "fullname": "Existing User"

@@ -15,7 +15,7 @@ def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
 # Route đăng ký
-@router.post("/signup")
+@router.post("/register")
 def signup(user: UserCreate, db: Session = Depends(get_db)):
     # Kiểm tra xem email đã tồn tại chưa
     if db.query(User).filter(User.email == user.email).first():

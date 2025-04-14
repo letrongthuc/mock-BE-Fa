@@ -1,8 +1,19 @@
+#main.py
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine
 from routers import auth
 
 app = FastAPI()
+
+# Thêm CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Cho phép tất cả các origin, bạn có thể thay thế "*" bằng URL cụ thể nếu muốn hạn chế
+    allow_credentials=True,
+    allow_methods=["*"],  # Cho phép tất cả các HTTP methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],  # Cho phép tất cả các headers
+)
 
 # Tạo bảng trong cơ sở dữ liệu (nếu chưa có)
 Base.metadata.create_all(bind=engine)
