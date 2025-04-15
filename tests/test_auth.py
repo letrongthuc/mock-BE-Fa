@@ -23,7 +23,7 @@ def test_signup():
     })
     print(response.json())
     assert response.status_code == 200
-    assert response.json()["msg"] == "User created successfully"
+    assert response.json()["msg"] == "User created successfully. Please check your email to verify your account."
     assert isinstance(response.json()["user_id"], int)
 
 
