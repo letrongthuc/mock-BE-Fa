@@ -14,8 +14,8 @@ async def send_verification_email(to_email: str, fullname: str, token: str):
     await aiosmtplib.send(
         msg,
         hostname=os.getenv("EMAIL_HOST"),
-        port=465,  # Sử dụng port 465 cho SSL
-        ssl=True,   # Sử dụng SSL thay vì STARTTLS
+        port=int(os.getenv("EMAIL_PORT")),  # EMAIL_PORT = 465
+        use_tls=True,                        # đúng khi dùng SSL
         username=os.getenv("EMAIL_FROM"),
         password=os.getenv("EMAIL_PASSWORD"),
     )
