@@ -1,5 +1,5 @@
 # models.py
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String
 from database import Base
 
 class User(Base):
@@ -9,3 +9,5 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     password = Column(String)
     fullname = Column(String)
+    is_verified = Column(Boolean, default=False)
+    verification_token = Column(String, nullable=True)
