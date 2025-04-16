@@ -9,7 +9,7 @@ async def send_verification_email(to_email: str, fullname: str, token: str):
     msg["To"] = to_email
     msg["Subject"] = "Please verify your email"
 
-    verification_link = f"{os.getenv('FRONTEND_URL')}/user/verify-email?token={token}"
+    verification_link = f"{os.getenv('FRONTEND_URL')}/verify-email?token={token}"
     msg.set_content(f"Hi {fullname}, please verify your email by clicking the following link: {verification_link}")
 
     await aiosmtplib.send(
